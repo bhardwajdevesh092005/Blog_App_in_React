@@ -1,16 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import { Provider, useDispatch } from 'react-redux'
+import { login, logout } from './Store/authSilce'
+import store from './Store/store'
+import authService from '../src/Appwrite/auth'
 import './App.css'
+import Header from './Components/Header/Header'
+import { Outlet } from 'react-router-dom'
+import Footer from './Components/Footer/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      
-    </>
-  )
+    const [loading, setLoading] = useState("false");
+    const dispatch = useDispatch();
+    useEffect(() => {
+        authService.getCurrentUser().then((userData) => {
+            if (userData) {
+                dispatch(login({ userData }));
+            } else {
+                dispatch(logout());
+            }
+        }).finally(() => { setLoading(false) })
+    }, [])
+    return (
+        <>
+            {!loading ? (
+                <>
+                    <Header />
+                    {/* <Outlet /> */}
+                    <hr className='border-2 border-black rounded-xl'></hr>
+                    <Footer />
+                </>
+            ) : null}
+        </>
+    )
 }
 
 export default App
