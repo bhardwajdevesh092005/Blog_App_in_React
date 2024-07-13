@@ -7,6 +7,7 @@ import './App.css'
 import Header from './Components/Header/Header'
 import { Outlet } from 'react-router-dom'
 import Footer from './Components/Footer/Footer'
+import Layout from './Components/Layout'
 
 function App() {
     const [loading, setLoading] = useState("false");
@@ -24,10 +25,7 @@ function App() {
         <>
             {!loading ? (
                 <>
-                    <Header />
-                    {/* <Outlet /> */}
-                    <hr className='border-2 border-black rounded-xl'></hr>
-                    <Footer />
+                    <Layout/>
                 </>
             ) : null}
         </>

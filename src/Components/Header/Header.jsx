@@ -35,13 +35,13 @@ function Header() {
         }
     ]
     return (
-        <div className='flex justify-between p-2 shadow-xl mb-20 rounded-b-xl'>
+        <div className='flex justify-between p-2 shadow-xl mb-10 rounded-b-xl'>
             <div className='w-1/3'>
                 <img src="/src/Assets/Logo.png" alt="" className='w-[100px]'/>
             </div>
             <div className='w-2/3 flex justify-between'>
                 {navItems.map((elem)=>(elem.active&&
-                    <button onClick={()=>{navigate(elem.slug)}} className='rounded-xl bg-red-600 text-xl px-2 hover:bg-red-400 shadow-black hover:text-gray-700 shadow-md hover:shadow-blue-700'>{elem.name}</button>
+                    <button onClick={()=>{navigate(elem.slug)}} key={elem.slug} className='rounded-xl bg-red-600 text-xl px-2 hover:bg-red-400 shadow-black hover:text-gray-700 shadow-md hover:shadow-blue-700'>{elem.name}</button>
                 ))
                 }
                 {loggedin&&<LogoutBtn/>}
