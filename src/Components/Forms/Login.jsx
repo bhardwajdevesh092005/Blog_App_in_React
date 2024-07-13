@@ -41,7 +41,7 @@ function Login() {
                 <div className='self-center my-2'><Input label = {"Password"} type = {"password"} className="bg-white rounded-lg px-1" {...register("password",{required:true})}/></div>
                 <div className='self-center my-2'><Input type = {"submit"} className="bg-white rounded-lg px-1"/></div>
             </form>
-            <p className='self-center'>{error}</p>
+            
         </div>
     )
 }

@@ -6,7 +6,7 @@ import authService from '../../Appwrite/auth'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Select from '../../InpBtn and Cards/Select'
-
+import { useParams } from 'react-router-dom'
 function PostForm({ post = null }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         Title: post?.Title || "",

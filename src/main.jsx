@@ -17,7 +17,7 @@ const route = createBrowserRouter(
         <Route path='/' element={<App/>}>
             <Route path='login' element={<Login/>}/>
             <Route path='signup' element={<Signup/>}/>
-            <Route path='add-post' element={<PostForm/>}/>
+            <Route path='add-post/' element={<PostForm/>}/>
             <Route path='posts' element={<AllPosts/>}/>
             <Route path='post/:id' element={<PostDisplay/>}/>
         </Route>
