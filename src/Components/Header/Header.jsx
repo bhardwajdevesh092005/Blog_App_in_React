@@ -4,6 +4,7 @@ import authService from '../../Appwrite/auth'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import LogoutBtn from '../../InpBtn and Cards/LogoutBtn'
 function Header() {
     let loggedin = useSelector((state)=>(state.status));
     const navigate = useNavigate();

@@ -6,10 +6,7 @@ import Footer from './Footer/Footer'
 function Layout() {
   return (
     <>
-        <Header/>
-        <Outlet/>
-        <hr className='border-2 border-black rounded-xl mt-10' />
-        <Footer/>
+        
     </>
   )
 }

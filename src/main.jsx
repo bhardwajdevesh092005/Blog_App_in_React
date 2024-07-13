@@ -8,12 +8,18 @@ import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, Ro
 import Login from './Components/Forms/Login.jsx'
 import Layout from './Components/Layout.jsx'
 import Signup from './Components/Forms/Signup.jsx'
+import PostForm from './Components/PostForm/PostForm.jsx'
+import AllPosts from './Components/AllPosts/AllPosts.jsx'
+import PostDisplay from './Components/PostDisplay.jsx/PostDisplay.jsx'
 
 const route = createBrowserRouter(
     createRoutesFromElements(
-        <Route path='/' element={<Layout/>}>
+        <Route path='/' element={<App/>}>
             <Route path='login' element={<Login/>}/>
             <Route path='signup' element={<Signup/>}/>
+            <Route path='add-post' element={<PostForm/>}/>
+            <Route path='posts' element={<AllPosts/>}/>
+            <Route path='post/:id' element={<PostDisplay/>}/>
         </Route>
     )
 )

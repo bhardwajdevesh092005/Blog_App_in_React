@@ -29,16 +29,19 @@ function Login() {
         }
     }
     return (
-        <div className='flex w-screen justify-center'>
-            <form onSubmit={handleSubmit(login)} className='flex flex-col w-1/3 bg-gray-400 shadow-2xl rounded-xl py-3'>
+        <div className='flex flex-col w-screen justify-center'>
+            <form onSubmit={handleSubmit(login)} className='flex self-center flex-col w-1/3 bg-gray-400 shadow-2xl rounded-xl py-3'>
                 <img src="/src/Assets/Logo.png" className='w-1/4 self-center' alt="" />
                 <div className='self-center text-xl'>Login into your account</div>
                 <div className='self-center text-md'>Don&apos;t have an account?<Link to="/signup" className='text-white'>SignUp</Link></div>
-                <div className='self-center my-2'><Input label = {"Username"} className="bg-white rounded-lg px-1" {...register("email",{required:true})}/></div>
+                <div className='self-center my-2'><Input label = {"Username"} className="bg-white rounded-lg px-1" {...register("email",{
+                    required:true,
+                    matchPattern:(value)=>/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value)||"Email must be valid"
+                    })}/></div>
                 <div className='self-center my-2'><Input label = {"Password"} type = {"password"} className="bg-white rounded-lg px-1" {...register("password",{required:true})}/></div>
                 <div className='self-center my-2'><Input type = {"submit"} className="bg-white rounded-lg px-1"/></div>
             </form>
-            {error&&<p className='self-center'>{error}</p>}
+            <p className='self-center'>{error}</p>
         </div>
     )
 }

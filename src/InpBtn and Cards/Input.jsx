@@ -10,7 +10,7 @@ const Input = forwardRef(({
     return(
     <div>
         {label&&<label htmlFor={id}>{label}</label>}
-        <input type={type} name="" className={`text-lg ml-2 ${className}`} id={id} ref={ref} {...props}/>
+        <input type={type}  name="" className={`text-lg ml-2 ${className}`} id={id} ref={ref} {...props}/>
     </div>  
     )
 });

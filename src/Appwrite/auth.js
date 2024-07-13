@@ -11,7 +11,7 @@ export class AuthServices{
         this.database = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
-
+    
     // Auth Actions
     async createAccount({name,email,password}){ 
         try {
@@ -23,13 +23,16 @@ export class AuthServices{
             }
         } catch (error) {
             console.log("Error while creating account",error);
+            throw error;
         }
     }
     async login({email,password}){
         try {
+            authService.logout();
             return await this.account.createEmailPasswordSession(email,password);
         } catch (error) {
             console.log("Error while login",error);
+            throw error;
         }
     }
     async getCurrentUser(){
@@ -37,6 +40,7 @@ export class AuthServices{
             return await this.account.get();
         } catch (error) {
             console.log("Error while checking login",error);
+            throw error;
         }
         return null;
     }
@@ -45,9 +49,10 @@ export class AuthServices{
             await this.account.deleteSessions();
         } catch (error) {
             console.log("Error while logging out",error);
+            throw error;
         }
     }
-
+    
     // Post Actions
     async createPost({title, slug, content, image, status, userId}){
         try {
@@ -56,10 +61,12 @@ export class AuthServices{
                 content,
                 userId,
                 image,
-                status
+                status,
+                slug
             })
         } catch (error) {
             console.log("Error while creating post",error);
+            throw error;
         }
     }
     async updatePost(slug,{title,content,image,status,userId}){
@@ -73,6 +80,7 @@ export class AuthServices{
             })
         } catch (error) {
             console.log("Error while updating post",error);
+            throw error;
         }
     }
     async removePost(slug){
@@ -81,6 +89,7 @@ export class AuthServices{
             return true;
         } catch (error) {
             console.log("Error while removing post from the database",error);
+            throw error;
         }
     }
     async  getPost(slug){
@@ -95,15 +104,17 @@ export class AuthServices{
             return await this.database.listDocuments(conf.appwrite_databaseid,conf.appwrite_collectionid,query);
         } catch (error) {
             console.log("Error while retrieving the posts",error);
+            throw error;
         }
     }
-
+    
     // File upload Services
     async uploadFile(file){
         try {
             return await this.bucket.createFile(conf.appwrite_bucketid,ID.unique(),file);
         } catch (error) {
             console.log("Error while uploading the file",error);
+            throw error;
         }
     }
     async delFile(fileId){
@@ -111,6 +122,7 @@ export class AuthServices{
             return await this.bucket.deleteFileFile(conf.appwrite_bucketid,fileId);
         } catch (error) {
             console.log("Error while delete the file",error);
+            throw error;
         }
     }
     getFilePreview(fileId){

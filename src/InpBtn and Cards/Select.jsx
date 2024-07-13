@@ -1,16 +1,16 @@
 import React from 'react'
 import { forwardRef,useId } from 'react'
 function Select({
-    options = [],
+    options,
     className = "",
     label,
     ...props
-}) {
+},ref = null) {
     const id = useId();
     return (
         <div>
             {label && <label htmlFor={id}>{label}</label>}
-            <select name="" id={id} className={className} {...props} ref={ref}>
+            <select name="" id={id} className={`${className} ml-5`} ref={ref} {...props}>
                 {options?.map((elem)=>(
                     <option key= {elem} value={elem}>{elem}</option>
                 ))}
